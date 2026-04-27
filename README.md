@@ -1,5 +1,6 @@
 website Link : http://htmlassignment2.s3-website.us-east-2.amazonaws.com
-
+Name : Harsh Sirohi
+registration No.: 12300911
 bucket creation and static link of website:
 
 <img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/96855c47-97a8-46ff-8f42-f6bcfcccb182" />

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Form</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+    }
+    .preview {
+      margin-top: 20px;
+      background: #e8f0fe;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Registration Form</h2>
+
+  <form id="myForm">
+    <input type="text" id="name" placeholder="Enter Name" required>
+
+    <input type="email" id="email" placeholder="Enter Email" required>
+
+    <input type="password" id="password" placeholder="Enter Password" required>
+
+    <select id="role">
+      <option value="">Select Role</option>
+      <option value="student">Student</option>
+      <option value="developer">Developer</option>
+    </select>
+
+    <!-- Dynamic field -->
+    <input type="text" id="college" class="hidden" placeholder="Enter College Name">
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div class="preview" id="preview">
+    <h3>Live Preview</h3>
+    <p>Full Name: <span id="pName"></span></p>
+    <p>Email: <span id="pEmail"></span></p>
+    <p>Role you want: <span id="pRole"></span></p>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById("myForm");
+  const nameInput = document.getElementById("name");
+  const emailInput = document.getElementById("email");
+  const roleInput = document.getElementById("role");
+  const collegeInput = document.getElementById("college");
+
+  const pName = document.getElementById("pName");
+  const pEmail = document.getElementById("pEmail");
+  const pRole = document.getElementById("pRole");
+
+  // Live Preview
+  nameInput.addEventListener("input", () => {
+    pName.textContent = nameInput.value;
+  });
+
+  emailInput.addEventListener("input", () => {
+    pEmail.textContent = emailInput.value;
+  });
+
+  roleInput.addEventListener("change", () => {
+    pRole.textContent = roleInput.value;
+
+    // Dynamic field logic
+    if (roleInput.value === "student") {
+      collegeInput.classList.remove("hidden");
+    } else {
+      collegeInput.classList.add("hidden");
+    }
+  });
+
+  // Form Submit
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    if (nameInput.value.length < 3) {
+      alert("Name must be at least 3 characters");
+      return;
+    }
+
+    if (!emailInput.value.includes("@")) {
+      alert("Enter valid email");
+      return;
+    }
+
+    alert("Form Submitted Successfully!");
+  });
+</script>
+
+</body>
+</html>
